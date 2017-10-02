@@ -37,6 +37,7 @@ cat <<- EOF > /opt/exhibitor/defaults.conf
 	auto-manage-instances-settling-period-ms=0
 	auto-manage-instances=1
 	auto-manage-instances-fixed-ensemble-size=$ZK_ENSEMBLE_SIZE
+	log4j-properties=log4j.rootLogger=INFO, ROLLINGFILE\nlog4j.appender.ROLLINGFILE=org.apache.log4j.RollingFileAppender\nlog4j.appender.ROLLINGFILE.Threshold=${zookeeper.log.threshold}\nlog4j.appender.ROLLINGFILE.File=./transactions/zookeeper.log\nlog4j.appender.ROLLINGFILE.MaxFileSize=100MB\nlog4j.appender.ROLLINGFILE.MaxBackupIndex=1\nlog4j.appender.ROLLINGFILE.layout=org.apache.log4j.PatternLayout\nlog4j.appender.ROLLINGFILE.layout.ConversionPattern=%d{ISO8601} [myid:%X{myid}] - %-5p [%t:%C{1}@%L] - %m%n
 EOF
 
 
